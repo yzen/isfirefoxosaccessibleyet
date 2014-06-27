@@ -1,0 +1,55 @@
+body {
+  font-family: "Open Sans","Droid Arabic Naskh","Mplus Fulah",sans-serif;
+  color: #FFF;
+  background-position: 0 0, 0 0, 0 0;
+  background-color: #00539F;
+  background-image: url('/css/images/header-background.png'), url('/css/images/blueprint.png'), url('/css/images/mdn-header-gradient.png');
+  background-repeat: repeat, repeat, repeat-x;
+}
+
+html, body, form, fieldset, legend, h1, h2, h3, h4, h5, h6, dd {
+  margin: 0;
+  padding: 0;
+}
+
+.large {
+  font-size: 4.5rem;
+  letter-spacing: -0.188rem;
+  line-height: 100%;
+}
+
+h1 {
+  font-size: 3rem;
+  letter-spacing: -0.125rem;
+  line-height: 100%;
+}
+
+h2 {
+  font-size: 2rem;
+  letter-spacing: -0.063rem;
+  line-height: 100%;
+}
+
+h3 {
+  font-size: 1.75rem;
+  letter-spacing: -0.031rem;
+  line-height: 100%;
+}
+
+h4 {
+  font-size: 1.5rem;
+  letter-spacing: -0.016rem;
+  line-height: 100%;
+}
+
+.small, small {
+  font-size: 0.75rem;
+  line-height: 100%;
+}
+
+main {
+  position: relative;
+  margin: 0 auto;
+  padding: 5rem 0;
+  width: 70%;
+}
