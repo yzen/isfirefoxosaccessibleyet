@@ -1,6 +1,7 @@
 body {
-  font-family: "Open Sans","Droid Arabic Naskh","Mplus Fulah",sans-serif;
+  font-family: "Open Sans Light","Droid Arabic Naskh","Mplus Fulah Light",sans-serif;
   color: #FFF;
+  font-weight: 100;
   background-position: 0 0, 0 0, 0 0;
   background-color: #00539F;
   background-image: url('/css/images/header-background.png'), url('/css/images/blueprint.png'), url('/css/images/mdn-header-gradient.png');
