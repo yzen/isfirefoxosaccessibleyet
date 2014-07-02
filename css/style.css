@@ -2,6 +2,8 @@ body {
   font-family: "Open Sans Light","Droid Arabic Naskh","Mplus Fulah Light",sans-serif;
   color: #FFF;
   font-weight: 100;
+  font-size: 1rem;
+  letter-spacing: -0.011rem;
   background-position: 0 0, 0 0, 0 0;
   background-color: #00539F;
   background-image: url('/css/images/header-background.png'), url('/css/images/blueprint.png'), url('/css/images/mdn-header-gradient.png');
@@ -53,4 +55,39 @@ main {
   margin: 0 auto;
   padding: 5rem 0;
   width: 70%;
+}
+
+.components {
+  list-style: none;
+  padding: 0;
+  color: #484848;
+}
+
+.component {
+  background-color: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-top: 1.25rem;
+  width: 100%;
+  word-wrap: break-word;
+  height: 200px;
+}
+
+.component h2 {
+  padding: 34px 0 0 calc(2rem + 68px);
+  display: inline-block;
+}
+
+.component a, .component a:link, .component a:visited {
+  color: #0095DD;
+  text-decoration: none;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.component a:focus {
+    outline: thin dotted;
+}
+
+.system {
+  background: url(https://raw.githubusercontent.com/mozilla-b2g/gaia/master/apps/system/style/icons/System_68.png) no-repeat scroll 1rem 1rem #FFFFFF;
 }
