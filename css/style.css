@@ -6,7 +6,7 @@ body {
   letter-spacing: -0.011rem;
   background-position: 0 0, 0 0, 0 0;
   background-color: #00539F;
-  background-image: url('/css/images/header-background.png'), url('/css/images/blueprint.png'), url('/css/images/mdn-header-gradient.png');
+  background-image: url('./css/images/header-background.png'), url('./css/images/blueprint.png'), url('./css/images/mdn-header-gradient.png');
   background-repeat: repeat, repeat, repeat-x;
 }
 
