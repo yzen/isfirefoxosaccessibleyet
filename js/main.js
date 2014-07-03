@@ -3,10 +3,12 @@
 (function() {
 
   function get(path, callback) {
-    var req =  new XMLHttpRequest();
-    req.onload = callback;
-    req.open('GET', path, true);
-    req.send();
+    var xhr =  new XMLHttpRequest();
+    xhr.open('GET', path);
+    xhr.setRequestHeader('Accept', 'application/json');
+    xhr.setRequestHeader('Content-Type', 'application/json');
+    xhr.addEventListener('load', callback, false);
+    xhr.send(null);
   }
 
   get('https://api-dev.bugzilla.mozilla.org/latest/bug?' +
