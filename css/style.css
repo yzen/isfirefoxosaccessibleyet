@@ -69,7 +69,7 @@ main {
 }
 
 .system h2{
-  background: url(https://raw.githubusercontent.com/mozilla-b2g/gaia/master/apps/system/style/icons/System_68.png) no-repeat scroll 0.5rem 0.25rem #FFF;
+  background: url(https://raw.githubusercontent.com/mozilla-b2g/gaia/master/apps/system/style/icons/System_68.png) no-repeat scroll 0.5rem 0.25rem #F6F4EC;
   background-size: 2rem;
 }
 
@@ -78,7 +78,11 @@ main {
   width: 85%;
   background: none repeat scroll 0 0 #FFF;
   margin: 0;
-  padding: 0;
+  padding: 1rem;
+}
+
+.system div, .system h2 {
+  border-color: #6D6F80;
 }
 
 .component a, .component a:link, .component a:visited {
