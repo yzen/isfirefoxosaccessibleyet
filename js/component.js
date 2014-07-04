@@ -4,25 +4,107 @@
 
 (function(window) {
 
-  window.component = function(container, options) {
+  window.component = function(name, container, options) {
     var component = {
       selectors: {
         total: '.total',
         open: '.open',
         resolved: '.resolved',
         p1: '.priority-1',
-        p2: '.priority-2'
+        p2: '.priority-2',
+        bugsList: '.p1-bugs-list',
+        goodFirstBugsList: '.good-first-bugs-list',
+        comment: '.comment'
       },
+      name: name,
+      counts: {},
       keys: options.keys,
       keywords: 'access'
     };
 
-    component.loadCount = function loadCount(element, args) {
+    component.loadComment = function loadComment() {
+      var xhr =  new XMLHttpRequest();
+      xhr.open('GET', '../comments/' + component.name + '.txt');
+      xhr.addEventListener('load', function() {
+        if (this.responseText) {
+          component.elements.comment.hidden = false;
+          component.elements.comment.textContent = this.responseText;
+        }
+      }, false);
+      xhr.send(null);
+    };
+
+    component.loadCount = function loadCount(elementKey, args, callback) {
+      var element = component.elements[elementKey];
       args = args || {};
       args.component = component.keys;
       args.keywords = component.keywords;
       bugzilla.getCount(args, function(count) {
+        var option = element.parentNode;
+        option.hidden = false;
+        option.setAttribute('href', bugzilla.getExternalUrl(args));
         element.textContent = count;
+        component.counts[elementKey] = count;
+        if (callback) {
+          callback();
+        }
+      });
+    };
+
+    component.loadTotal = function loadTotal() {
+      component.loadCount('total', null, function() {
+        component.loadComment();
+        if (component.counts.total === 0) {
+          return;
+        }
+        component.loadBugs();
+      });
+    };
+
+    component.loadBugs = function loadBugs() {
+      component.loadCount('open', {
+        status: ['NEW', 'REOPENED']
+      });
+      component.loadCount('resolved', {
+        status: ['RESOLVED']
+      });
+      component.loadCount('p1', {
+        status: ['NEW', 'REOPENED'],
+        whiteboard: '[b2ga11y p=1]'
+      });
+      component.loadCount('p2', {
+        status: ['NEW', 'REOPENED'],
+        whiteboard: '[b2ga11y p=2]'
+      });
+
+      component.loadBugsList(component.elements.bugsList, {
+        status: ['NEW', 'REOPENED'],
+        whiteboard: '[b2ga11y p=1]'
+      });
+
+      component.loadBugsList(component.elements.goodFirstBugsList, {
+        status: ['NEW', 'REOPENED'],
+        whiteboard: '[good first bug]'
+      });
+    };
+
+    component.loadBugsList = function loadBugsList(bugsList, args) {
+      args = args || {};
+      args.component = component.keys;
+      args.keywords = component.keywords;
+      bugzilla.getList(args, function(bugs) {
+        if (bugs.length === 0) {
+          return;
+        }
+        bugs.forEach(function(bug) {
+          var option = document.createElement('a');
+          option.setAttribute('href', bugzilla.bugUrl + bug.id);
+          option.classList.add('bugs-list-item');
+          option.setAttribute('role', 'option');
+          option.textContent = bug.summary;
+          bugsList.appendChild(option);
+        });
+        bugsList.hidden = false;
       });
     };
 
@@ -36,56 +118,12 @@
           selector);
       }
 
-      component.loadCount(component.elements.total);
-      component.loadCount(component.elements.open, {
-        status: ['NEW', 'REOPENED']
-      });
-      component.loadCount(component.elements.resolved, {
-        status: ['RESOLVED']
-      });
-      component.loadCount(component.elements.p1, {
-        status: ['NEW', 'REOPENED'],
-        whiteboard: '[b2ga11y p=1]'
-      });
-      component.loadCount(component.elements.p2, {
-        status: ['NEW', 'REOPENED'],
-        whiteboard: '[b2ga11y p=2]'
-      });
+      component.loadTotal();
     };
 
     component.init();
 
     return component;
   };
-
-  // bugzilla.getCount({
-  //   whiteboard: '[b2ga11y p=1]',
-  //   status: ['NEW', 'REOPENED'],
-  //   component: ['Gaia::System', 'Gaia::System::Lockscreen',
-  //     'Gaia::System::Input Mgmt', 'Gaia::System::Browser Chrome',
-  //     'Gaia::System::Window Mgmt']
-  // }, function(count) {
-  //   console.log(count);
-  // });
-
-  // bugzilla.getList({
-  //   whiteboard: '[b2ga11y p=1]',
-  //   status: ['NEW', 'REOPENED'],
-  //   component: ['Gaia::System', 'Gaia::System::Lockscreen',
-  //     'Gaia::System::Input Mgmt', 'Gaia::System::Browser Chrome',
-  //     'Gaia::System::Window Mgmt']
-  // }, function(bugs) {
-  //   console.log(bugs);
-  // });
-
-  // var systemAppUrl = 'https://api-dev.bugzilla.mozilla.org/latest/bug?' +
-  //   'whiteboard=[b2ga11y p=1]&' +
-  //   'status=NEW&' +
-  //   'status=REOPENED&' +
-  //   'component=Gaia::System&' +
-  //   'component=Gaia::System::Lockscreen&' +
-  //   'component=Gaia::System::Input Mgmt&' +
-  //   'component=Gaia::System::Browser Chrome&' +
-  //   'component=Gaia::System::Window Mgmt';
 
 })(window);

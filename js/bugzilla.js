@@ -3,6 +3,7 @@
 (function(window) {
 
   var bugzillaUrl = 'https://api-dev.bugzilla.mozilla.org/latest/';
+  var bugzillaExtUrl = 'https://bugzilla.mozilla.org/';
 
   function get(path, callback) {
     var xhr =  new XMLHttpRequest();
@@ -15,11 +16,20 @@
     xhr.send(null);
   }
 
-  function buildUrl(prefix, args) {
-    var url = bugzillaUrl + prefix + '?';
+  function buildUrl(url, prefix, args) {
+    var external = url === bugzillaExtUrl;
+    url += prefix + '?';
 
     Object.keys(args).forEach(function(key, index) {
       var val = args[key];
+      if (external) {
+        if (key === 'whiteboard') {
+          key = 'status_whiteboard';
+          url += '&status_whiteboard_type=substring';
+        } else if (key === 'status') {
+          key = 'bug_status';
+        }
+      }
       if (Object.prototype.toString.call(val) === "[object Array]") {
         val.forEach(function(val) {
           url += '&' + key + '=' + val;
@@ -33,11 +43,11 @@
   }
 
   function countUrl(args) {
-    return buildUrl('count', args);
+    return buildUrl(bugzillaUrl, 'count', args);
   }
 
   function listUrl(args) {
-    return buildUrl('bug', args)
+    return buildUrl(bugzillaUrl, 'bug', args)
   }
 
   function getCount(args, callback) {
@@ -52,9 +62,15 @@
     });
   }
 
+  function getExternalUrl(args) {
+    return buildUrl(bugzillaExtUrl, 'buglist.cgi', args);
+  }
+
   window.bugzilla = {
     getList: getList,
-    getCount: getCount
+    getCount: getCount,
+    getExternalUrl: getExternalUrl,
+    bugUrl: 'https://bugzilla.mozilla.org/show_bug.cgi?id='
   };
 
 })(window);

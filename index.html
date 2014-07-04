@@ -7,23 +7,30 @@
   </head>
   <body>
     <main>
-      <header class="large">Is Firefox OS Accessible Yet?</header>
-      <ul class="components">
-        <li class="component system">
-          <h2>System App</h2>
-          <div>
-            <h3>
-              Bugs:
-              Total <span class="total"></span>
-              Open <span class="open"></span>
-              Resolved <span class="resolved"></span>
-              P1 <span class="priority-1"></span>
-              P2 <span class="priority-2"></span>
-            </h3>
-            <a href="https://bugzilla.mozilla.org/enter_bug.cgi?alias=&assigned_to=nobody%40mozilla.org&attach_text=&blocked=gaiaa11y&bug_file_loc=http%3A%2F%2F&bug_ignored=0&bug_mentors=&bug_severity=normal&bug_status=NEW&cc=yzenevich%40mozilla.com&cc=marco.zehe%40googlemail.com&cc=eitan%40monotonous.org&cf_blocking_b2g=---&cf_crash_signature=&cf_feature_b2g=---&cf_fx_iteration=---&cf_fx_points=---&cf_status_b2g18=---&cf_status_b2g_1_1_hd=---&cf_status_b2g_1_2=---&cf_status_b2g_1_3=---&cf_status_b2g_1_3t=---&cf_status_b2g_1_4=---&cf_status_b2g_2_0=---&cf_status_b2g_2_1=---&cf_status_firefox30=---&cf_status_firefox31=---&cf_status_firefox32=---&cf_status_firefox33=---&cf_status_firefox_esr24=---&cf_tracking_b2g18=---&cf_tracking_b2g_v1_2=---&cf_tracking_b2g_v1_3=---&cf_tracking_firefox30=---&cf_tracking_firefox31=---&cf_tracking_firefox32=---&cf_tracking_firefox33=---&cf_tracking_firefox_esr24=---&cf_tracking_firefox_relnote=---&cf_tracking_relnote_b2g=---&cf_user_story=&cf_ux_b2g=---&comment=&component=Gaia%3A%3ASystem&contenttypeentry=&contenttypemethod=autodetect&contenttypeselection=text%2Fplain&data=&defined_groups=1&dependson=&description=&flag_type-203=X&flag_type-37=X&flag_type-4=X&flag_type-5=X&flag_type-607=X&flag_type-720=X&flag_type-721=X&flag_type-737=X&flag_type-781=X&flag_type-787=X&flag_type-791=X&flag_type-799=X&flag_type-800=X&flag_type-803=X&flag_type-809=X&flag_type-825=X&flag_type-827=X&flag_type-835=X&flag_type-836=X&flag_type-838=X&flag_type-841=X&flag_type-842=X&flag_type-844=X&flag_type-853=X&flag_type-854=X&flag_type-855=X&form_name=enter_bug&keywords=access&maketemplate=Remember%20values%20as%20bookmarkable%20template&op_sys=Gonk%20%28Firefox%20OS%29&priority=--&product=Firefox%20OS&qa_contact=&rep_platform=All&requestee_type-203=&requestee_type-4=&requestee_type-5=&requestee_type-607=&requestee_type-781=&requestee_type-787=&requestee_type-791=&requestee_type-800=&requestee_type-827=&requestee_type-838=&requestee_type-841=&requestee_type-844=&requestee_type-854=&requestee_type-855=&see_also=&short_desc=&status_whiteboard=&target_milestone=---&version=unspecified">Open a new bug</a>
+      <h1 class="large">Is Firefox OS Accessible Yet?</h1>
+      <div class="components">
+        <section class="component system">
+          <header class="header">System App</header>
+          <div class="component-section">
+            <div class="bugs-counts" aria-labelledby="bug-count" role="listbox">
+              <div id="bug-count" class="bug-count bug-count-label" aria-hidden="true">Bugs</div>
+              <a role="option" class="bug-count total-bugs" hidden><span class="total"></span> - Total</a>
+              <a role="option" class="bug-count open-bugs" hidden><span class="open"></span> - Open</a>
+              <a role="option" class="bug-count resolved-bugs" hidden><span class="resolved"></span> - Resolved</a>
+              <a role="option" class="bug-count priority-1-bugs" hidden><span class="priority-1"></span> - P1</a>
+              <a role="option" class="bug-count priority-2-bugs" hidden><span class="priority-2"></span> - P2</a>
+              <a role="option" class="bug-count new-bug" href="https://bugzilla.mozilla.org/enter_bug.cgi?alias=&assigned_to=nobody%40mozilla.org&attach_text=&blocked=gaiaa11y&bug_file_loc=http%3A%2F%2F&bug_ignored=0&bug_mentors=&bug_severity=normal&bug_status=NEW&cc=yzenevich%40mozilla.com&cc=marco.zehe%40googlemail.com&cc=eitan%40monotonous.org&cf_blocking_b2g=---&cf_crash_signature=&cf_feature_b2g=---&cf_fx_iteration=---&cf_fx_points=---&cf_status_b2g18=---&cf_status_b2g_1_1_hd=---&cf_status_b2g_1_2=---&cf_status_b2g_1_3=---&cf_status_b2g_1_3t=---&cf_status_b2g_1_4=---&cf_status_b2g_2_0=---&cf_status_b2g_2_1=---&cf_status_firefox30=---&cf_status_firefox31=---&cf_status_firefox32=---&cf_status_firefox33=---&cf_status_firefox_esr24=---&cf_tracking_b2g18=---&cf_tracking_b2g_v1_2=---&cf_tracking_b2g_v1_3=---&cf_tracking_firefox30=---&cf_tracking_firefox31=---&cf_tracking_firefox32=---&cf_tracking_firefox33=---&cf_tracking_firefox_esr24=---&cf_tracking_firefox_relnote=---&cf_tracking_relnote_b2g=---&cf_user_story=&cf_ux_b2g=---&comment=&component=Gaia%3A%3ASystem&contenttypeentry=&contenttypemethod=autodetect&contenttypeselection=text%2Fplain&data=&defined_groups=1&dependson=&description=&flag_type-203=X&flag_type-37=X&flag_type-4=X&flag_type-5=X&flag_type-607=X&flag_type-720=X&flag_type-721=X&flag_type-737=X&flag_type-781=X&flag_type-787=X&flag_type-791=X&flag_type-799=X&flag_type-800=X&flag_type-803=X&flag_type-809=X&flag_type-825=X&flag_type-827=X&flag_type-835=X&flag_type-836=X&flag_type-838=X&flag_type-841=X&flag_type-842=X&flag_type-844=X&flag_type-853=X&flag_type-854=X&flag_type-855=X&form_name=enter_bug&keywords=access&maketemplate=Remember%20values%20as%20bookmarkable%20template&op_sys=Gonk%20%28Firefox%20OS%29&priority=--&product=Firefox%20OS&qa_contact=&rep_platform=All&requestee_type-203=&requestee_type-4=&requestee_type-5=&requestee_type-607=&requestee_type-781=&requestee_type-787=&requestee_type-791=&requestee_type-800=&requestee_type-827=&requestee_type-838=&requestee_type-841=&requestee_type-844=&requestee_type-854=&requestee_type-855=&see_also=&short_desc=&status_whiteboard=&target_milestone=---&version=unspecified">New</a>
+            </div>
+            <p class="comment" hidden></p>
+            <div div class="p1-bugs-list bugs-list" role="listbox" aria-labelledby="bugs-list-label" hidden>
+              <div id="bugs-list-label" class="bugs-list-item bugs-list-label" aria-hidden="true">Highest Priority Bugs</div>
+            </div>
+            <div div class="good-first-bugs-list bugs-list" role="listbox" aria-labelledby="bugs-list-label" hidden>
+              <div id="bugs-list-label" class="bugs-list-item bugs-list-label" aria-hidden="true">Good First Bugs</div>
+            </div>
           </div>
-        </li>
-      </ul>
+        </section>
+      </div>
     </main>
     <script type="text/javascript" src="js/bugzilla.js"></script>
     <script type="text/javascript" src="js/component.js"></script>

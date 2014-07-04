@@ -4,7 +4,7 @@
 
 (function(window) {
 
-  component('.system', {
+  component('system', '.system', {
     keys: ['Gaia::System', 'Gaia::System::Lockscreen',
       'Gaia::System::Input Mgmt', 'Gaia::System::Browser Chrome',
       'Gaia::System::Window Mgmt']

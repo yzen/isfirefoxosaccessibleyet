@@ -7,7 +7,7 @@ body {
   background-repeat: repeat, repeat, repeat-x;
 }
 
-h1, h2, h3, h4, h5, h6, .large {
+h1, h2, h3, h4, h5, h6, .large, .component .header, .bugs-counts {
   margin: 0;
   padding: 0;
   line-height: 100%;
@@ -24,12 +24,12 @@ h1 {
   letter-spacing: -0.125rem;
 }
 
-h2 {
+h2, .component .header {
   font-size: 2rem;
   letter-spacing: -0.063rem;
 }
 
-h3 {
+h3, .bugs-counts {
   font-size: 1.75rem;
   letter-spacing: -0.031rem;
 }
@@ -51,16 +51,16 @@ main {
 }
 
 .components {
-  list-style: none;
   padding: 0;
   color: #484848;
+  margin: 1rem 0;
 }
 
 .component {
   margin: 0 auto 1rem;
 }
 
-.component h2 {
+.component .header {
   width: 35%;
   box-sizing: border-box;
   overflow: hidden;
@@ -68,12 +68,62 @@ main {
   border-left: 0.25rem solid #0095DD;
 }
 
-.system h2{
-  background: url(https://raw.githubusercontent.com/mozilla-b2g/gaia/master/apps/system/style/icons/System_68.png) no-repeat scroll 0.5rem 0.25rem #F6F4EC;
-  background-size: 2rem;
+.component a, .component a:link, .component a:visited {
+  color: #0095DD;
+  text-decoration: none;
 }
 
-.component div {
+.comment {
+  padding: 1rem 0 1rem 0.25rem;
+  border: 1px solid #F6F4EC;
+}
+
+.bugs-counts {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.bugs-counts .bug-count{
+  padding: 0.25rem;
+}
+
+.bug-count-label {
+  font-weight: normal;
+}
+
+.total-bugs, .open-bugs, .resolved-bugs, .priority-1-bugs, .priority-2-bugs, .new-bug {
+  border-width: 0.25rem;
+  border-style: solid;
+}
+
+.total-bugs {
+  border-color: #E66000;
+}
+
+.open-bugs {
+  border-color: #00539F;
+}
+
+.resolved-bugs {
+  border-color: #30A923;
+}
+
+.priority-1-bugs {
+  border-color: #EA3B28;
+}
+
+.priority-2-bugs {
+  border-color: #C13832;
+}
+
+a.new-bug, a.new-bug:link, a.new-bug:visited {
+  color: #FFF;
+  background-color: #0095DD;
+  border-color: #0095DD;
+}
+
+.component .component-section {
   border-left: 0.25rem solid #0095DD;
   width: 85%;
   background: none repeat scroll 0 0 #FFF;
@@ -81,17 +131,31 @@ main {
   padding: 1rem;
 }
 
-.system div, .system h2 {
+.bugs-list {
+  margin-top: 1rem;
+}
+
+.bugs-list-item {
+  display: inherit;
+  padding: 0.5rem 0 0.5rem 0.25rem;
+  border: 1px solid #F6F4EC;
+}
+
+.bugs-list-label {
+  font-size: 1.75rem;
+  letter-spacing: -0.031rem;
+  font-weight: 100;
+}
+
+.bugs-list-item:nth-child(2n) {
+  background-color: #F6F4EC;
+}
+
+.system .header{
+  background: url(https://raw.githubusercontent.com/mozilla-b2g/gaia/master/apps/system/style/icons/System_68.png) no-repeat scroll 0.5rem 0.25rem #F6F4EC;
+  background-size: 2rem;
+}
+
+.system .component-section, .system .header {
   border-color: #6D6F80;
-}
-
-.component a, .component a:link, .component a:visited {
-  color: #0095DD;
-  text-decoration: none;
-  display: inline-block;
-  vertical-align: middle;
-}
-
-.component a:focus {
-    outline: thin dotted;
 }
