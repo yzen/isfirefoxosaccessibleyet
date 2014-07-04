@@ -159,3 +159,12 @@ a.new-bug, a.new-bug:link, a.new-bug:visited {
 .system .component-section, .system .header {
   border-color: #6D6F80;
 }
+
+.settings .header{
+  background: url(https://raw.githubusercontent.com/mozilla-b2g/gaia/master/apps/settings/style/icons/settings_284.png) no-repeat scroll 0.5rem 0.25rem #F6F4EC;
+  background-size: 2rem;
+}
+
+.settings .component-section, .settings .header {
+  border-color: #E0E6EB;
+}

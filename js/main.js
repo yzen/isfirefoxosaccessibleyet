@@ -10,4 +10,8 @@
       'Gaia::System::Window Mgmt']
   });
 
+  component('settings', '.settings', {
+    keys: 'Gaia::Settings'
+  });
+
 })(window);
