@@ -168,3 +168,12 @@ a.new-bug, a.new-bug:link, a.new-bug:visited {
 .settings .component-section, .settings .header {
   border-color: #E0E6EB;
 }
+
+.contacts .header{
+  background: url(https://raw.githubusercontent.com/mozilla-b2g/gaia/master/apps/communications/contacts/style/icons/contacts_284.png) no-repeat scroll 0.5rem 0.25rem #F6F4EC;
+  background-size: 2rem;
+}
+
+.contacts .component-section, .contacts .header {
+  border-color: #00ADAD;
+}

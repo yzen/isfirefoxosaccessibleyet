@@ -14,4 +14,8 @@
     keys: 'Gaia::Settings'
   });
 
+  component('contacts', '.contacts', {
+    keys: 'Gaia::Contacts'
+  });
+
 })(window);
