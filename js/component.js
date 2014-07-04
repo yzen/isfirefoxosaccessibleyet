@@ -24,7 +24,7 @@
 
     component.loadComment = function loadComment() {
       var xhr =  new XMLHttpRequest();
-      xhr.open('GET', '../comments/' + component.name + '.txt');
+      xhr.open('GET', 'comments/' + component.name + '.txt');
       xhr.addEventListener('load', function() {
         if (this.responseText) {
           component.elements.comment.hidden = false;
