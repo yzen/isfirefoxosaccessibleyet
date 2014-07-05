@@ -7,15 +7,18 @@
   component('system', '.system', {
     keys: ['Gaia::System', 'Gaia::System::Lockscreen',
       'Gaia::System::Input Mgmt', 'Gaia::System::Browser Chrome',
-      'Gaia::System::Window Mgmt']
+      'Gaia::System::Window Mgmt'],
+    label: 'System App'
   });
 
   component('settings', '.settings', {
-    keys: 'Gaia::Settings'
+    keys: ['Gaia::Settings'],
+    label: 'Settings App'
   });
 
   component('contacts', '.contacts', {
-    keys: 'Gaia::Contacts'
+    keys: ['Gaia::Contacts'],
+    label: 'Contacts App'
   });
 
 })(window);

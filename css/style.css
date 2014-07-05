@@ -81,11 +81,13 @@ main {
 .bugs-counts {
   display: flex;
   justify-content: space-around;
+  flex-wrap: wrap;
   align-items: center;
 }
 
 .bugs-counts .bug-count{
   padding: 0.25rem;
+  margin-bottom: 0.25rem;
 }
 
 .bug-count-label {

@@ -62,8 +62,8 @@
     });
   }
 
-  function getExternalUrl(args) {
-    return buildUrl(bugzillaExtUrl, 'buglist.cgi', args);
+  function getExternalUrl(args, prefix) {
+    return buildUrl(bugzillaExtUrl, prefix || 'buglist.cgi', args);
   }
 
   window.bugzilla = {
