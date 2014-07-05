@@ -23,7 +23,29 @@
       name: name,
       counts: {},
       keys: options.keys,
-      keywords: 'access'
+      keywords: 'access',
+      html: '<header class="header"></header>' +
+        '<div class="component-section">' +
+          '<div class="bugs-counts" role="listbox">' +
+            '<div class="bug-count bug-count-label" aria-hidden="true">Bugs' +
+            '</div>' +
+            '<a role="option" class="bug-count total-bugs" hidden><span ' +
+              'class="total"></span> - Total</a>' +
+            '<a role="option" class="bug-count open-bugs" hidden><span ' +
+              'class="open"></span> - Open</a>' +
+            '<a role="option" class="bug-count resolved-bugs" hidden><span ' +
+              'class="resolved"></span> - Resolved</a>' +
+            '<a role="option" class="bug-count priority-1-bugs" hidden><span ' +
+              'class="priority-1"></span> - P1</a>' +
+            '<a role="option" class="bug-count priority-2-bugs" hidden><span ' +
+              'class="priority-2"></span> - P2</a>' +
+            '<a role="option" class="bug-count new-bug">New</a>' +
+          '</div>' +
+          '<p class="comment" hidden></p>' +
+          '<div class="p1-bugs-list bugs-list" role="listbox" hidden></div>' +
+          '<div class="good-first-bugs-list bugs-list" role="listbox" hidden>' +
+          '</div>' +
+        '</div>'
     };
 
     function setElement(element, opts) {
@@ -42,7 +64,7 @@
     function makeElement(opts) {
       var element = document.createElement(opts.tag);
       return setElement(element, opts);
-    };
+    }
 
     component.loadComment = function loadComment() {
       var xhr =  new XMLHttpRequest();
@@ -163,6 +185,8 @@
     component.init = function init() {
       component.element = document.querySelector(container);
       component.elements = {};
+
+      component.element.insertAdjacentHTML('beforeend', component.html);
 
       for (var key in component.selectors) {
         var selector = component.selectors[key];
