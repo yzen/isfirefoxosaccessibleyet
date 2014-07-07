@@ -16,6 +16,11 @@
     label: 'Settings App'
   });
 
+  component('ftu', '.ftu', {
+    keys: ['Gaia::First Time Experience'],
+    label: 'First Time Use App'
+  });
+
   component('contacts', '.contacts', {
     keys: ['Gaia::Contacts'],
     label: 'Contacts App'
@@ -31,9 +36,34 @@
     label: 'SMS App'
   });
 
+  component('calendar', '.calendar', {
+    keys: ['Gaia::Calendar'],
+    label: 'Calendar App'
+  });
+
+  component('email', '.email', {
+    keys: ['Gaia::E-Mail'],
+    label: 'E-Mail App'
+  });
+
+  component('clock', '.clock', {
+    keys: ['Gaia::Clock'],
+    label: 'Clock App'
+  });
+
+  component('costcontrol', '.costcontrol', {
+    keys: ['Gaia::Cost Control'],
+    label: 'Cost Control App'
+  });
+
   component('homescreen', '.homescreen', {
     keys: ['Gaia::Homescreen'],
     label: 'Homescreen App'
+  });
+
+  component('search', '.search', {
+    keys: ['Gaia::Search'],
+    label: 'Search App'
   });
 
   component('keyboard', '.keyboard', {
@@ -41,9 +71,24 @@
     label: 'Keyboard App'
   });
 
+  component('camera', '.camera', {
+    keys: ['Gaia::Camera'],
+    label: 'Camera App'
+  });
+
+  component('gallery', '.gallery', {
+    keys: ['Gaia::Gallery'],
+    label: 'Gallery App'
+  });
+
   component('music', '.music', {
     keys: ['Gaia::Music'],
     label: 'Music App'
+  });
+
+  component('fm', '.fm', {
+    keys: ['Gaia::FMRadio'],
+    label: 'FM Radio App'
   });
 
   component('video', '.video', {
