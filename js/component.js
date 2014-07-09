@@ -26,25 +26,24 @@
       keywords: 'access',
       html: '<header class="header"></header>' +
         '<div class="component-section">' +
-          '<div class="bugs-counts" role="listbox">' +
-            '<div class="bug-count bug-count-label" aria-hidden="true">Bugs' +
-            '</div>' +
-            '<a role="option" class="bug-count total-bugs" hidden><span ' +
-              'class="total"></span> - Total</a>' +
-            '<a role="option" class="bug-count open-bugs" hidden><span ' +
-              'class="open"></span> - Open</a>' +
-            '<a role="option" class="bug-count resolved-bugs" hidden><span ' +
-              'class="resolved"></span> - Resolved</a>' +
-            '<a role="option" class="bug-count priority-1-bugs" hidden><span ' +
-              'class="priority-1"></span> - P1</a>' +
-            '<a role="option" class="bug-count priority-2-bugs" hidden><span ' +
-              'class="priority-2"></span> - P2</a>' +
-            '<a role="option" class="bug-count new-bug">New</a>' +
-          '</div>' +
+          '<ul class="bugs-counts">' +
+            '<li class="bug-count bug-count-label" aria-hidden="true">Bugs' +
+            '</li>' +
+            '<li><a class="bug-count total-bugs" hidden><span ' +
+              'class="total"></span> - Total</a></li>' +
+            '<li><a class="bug-count open-bugs" hidden><span ' +
+              'class="open"></span> - Open</a></li>' +
+            '<li><a class="bug-count resolved-bugs" hidden><span ' +
+              'class="resolved"></span> - Resolved</a></li>' +
+            '<li><a class="bug-count priority-1-bugs" hidden><span ' +
+              'class="priority-1"></span> - P1</a></li>' +
+            '<li><a class="bug-count priority-2-bugs" hidden><span ' +
+              'class="priority-2"></span> - P2</a></li>' +
+            '<li><a class="bug-count new-bug">New</a></li>' +
+          '</ul>' +
           '<p class="comment" hidden></p>' +
-          '<div class="p1-bugs-list bugs-list" role="listbox" hidden></div>' +
-          '<div class="good-first-bugs-list bugs-list" role="listbox" hidden>' +
-          '</div>' +
+          '<ul class="p1-bugs-list bugs-list" hidden></ul>' +
+          '<ul class="good-first-bugs-list bugs-list" hidden></ul>' +
         '</div>'
     };
 
@@ -142,7 +141,7 @@
         }
         bugsList.setAttribute('aria-labelledby', labelId);
         bugsList.appendChild(makeElement({
-          tag: 'div',
+          tag: 'li',
           id: labelId,
           classes: ['bugs-list-item', 'bugs-list-label'],
           attrs: {
@@ -151,15 +150,18 @@
           text: label
         }));
         bugs.forEach(function(bug) {
-          bugsList.appendChild(makeElement({
+          var li = makeElement({
+            tag: 'li',
+            classes: ['bugs-list-item']
+          });
+          li.appendChild(makeElement({
             tag: 'a',
             attrs: {
-              href: bugzilla.bugUrl + bug.id,
-              role: 'option'
+              href: bugzilla.bugUrl + bug.id
             },
-            classes: ['bugs-list-item'],
             text: bug.summary
           }));
+          bugsList.appendChild(li);
         });
         bugsList.hidden = false;
       });
@@ -184,6 +186,7 @@
 
     component.init = function init() {
       component.element = document.querySelector(container);
+      component.element.classList.add('component');
       component.elements = {};
 
       component.element.insertAdjacentHTML('beforeend', component.html);
