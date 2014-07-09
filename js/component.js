@@ -39,7 +39,7 @@
               'class="priority-1"></span> - P1</a></li>' +
             '<li><a class="bug-count priority-2-bugs" hidden><span ' +
               'class="priority-2"></span> - P2</a></li>' +
-            '<li><a class="bug-count new-bug">New</a></li>' +
+            '<li><a class="bug-count new-bug">File New Bug</a></li>' +
           '</ul>' +
           '<p class="comment" hidden></p>' +
           '<ul class="p1-bugs-list bugs-list" hidden></ul>' +
@@ -161,7 +161,14 @@
       });
     };
 
-    component.renderOverview = function() {
+    component.activateSection = function activateSection() {
+      component.render();
+      component.loadTotal();
+      component.element.hidden = false;
+      component.element.focus();
+    };
+
+    component.renderOverview = function renderOverview() {
       component.loadComment(function() {
         var li = makeElement({
           tag: 'li',
@@ -173,24 +180,31 @@
           text: options.label,
           classes: ['link'],
           attrs: {
-            href: container
+            href: container,
+            'aria-haspopup': true,
+            'aria-controls': container.substr(1),
+            'aria-describedby': component.name + '-score',
           }
         });
-        a.addEventListener('click', function() {
-          component.element.hidden = false;
-          component.render();
-          component.loadTotal();
-        });
+        a.addEventListener('click', component.activateSection);
         li.appendChild(a);
         li.appendChild(makeElement({
           tag: 'span',
           classes: ['score'],
           attrs: {
-            'aria-label': 'Accessibility Score'
+            'aria-label': component.comment.score ?
+              'Accessibility Score ' + component.comment.score : '',
+            'aria-hidden': true
           },
+          id: component.name + '-score',
           text: component.comment.score || ''
         }));
         document.querySelector('.components-overview').appendChild(li);
+
+        // If App hash is present load the component section.
+        if (window.location.hash.substr(1) === component.name) {
+          component.activateSection();
+        }
       });
     };
 
