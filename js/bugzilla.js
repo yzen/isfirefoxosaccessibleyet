@@ -70,7 +70,8 @@
     getList: getList,
     getCount: getCount,
     getExternalUrl: getExternalUrl,
-    bugUrl: 'https://bugzilla.mozilla.org/show_bug.cgi?id='
+    bugUrl: 'https://bugzilla.mozilla.org/show_bug.cgi?id=',
+    get: get
   };
 
 })(window);

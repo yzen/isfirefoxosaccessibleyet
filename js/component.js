@@ -65,16 +65,11 @@
       return setElement(element, opts);
     }
 
-    component.loadComment = function loadComment() {
-      var xhr =  new XMLHttpRequest();
-      xhr.open('GET', 'comments/' + component.name + '.txt');
-      xhr.addEventListener('load', function() {
-        if (this.responseText) {
-          component.elements.comment.hidden = false;
-          component.elements.comment.textContent = this.responseText;
-        }
-      }, false);
-      xhr.send(null);
+    component.loadComment = function loadComment(callback) {
+      bugzilla.get('comments/' + component.name + '.json', function(response) {
+        component.comment = response;
+        callback && callback();
+      });
     };
 
     component.loadCount = function loadCount(elementKey, args, callback) {
@@ -96,7 +91,6 @@
 
     component.loadTotal = function loadTotal() {
       component.loadCount('total', null, function() {
-        component.loadComment();
         if (component.counts.total === 0) {
           return;
         }
@@ -167,6 +161,39 @@
       });
     };
 
+    component.renderOverview = function() {
+      component.loadComment(function() {
+        var li = makeElement({
+          tag: 'li',
+          classes: ['item'],
+          id: component.name + '-overview'
+        });
+        var a = makeElement({
+          tag: 'a',
+          text: options.label,
+          classes: ['link'],
+          attrs: {
+            href: container
+          }
+        });
+        a.addEventListener('click', function() {
+          component.element.hidden = false;
+          component.render();
+          component.loadTotal();
+        });
+        li.appendChild(a);
+        li.appendChild(makeElement({
+          tag: 'span',
+          classes: ['score'],
+          attrs: {
+            'aria-label': 'Accessibility Score'
+          },
+          text: component.comment.score || ''
+        }));
+        document.querySelector('.components-overview').appendChild(li);
+      });
+    };
+
     component.render = function render() {
       component.elements.header.textContent = options.label;
       component.elements.bugCounts.setAttribute('aria-labelledby',
@@ -182,6 +209,10 @@
         product: 'Firefox OS',
         rep_platform: 'All'
       }, 'enter_bug.cgi'));
+      if (component.comment.comment) {
+        component.elements.comment.hidden = false;
+        component.elements.comment.textContent = component.comment.comment;
+      }
     };
 
     component.init = function init() {
@@ -197,8 +228,7 @@
           selector);
       }
 
-      component.render();
-      component.loadTotal();
+      component.renderOverview();
     };
 
     component.init();

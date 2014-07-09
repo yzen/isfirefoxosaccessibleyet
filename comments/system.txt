@@ -1,2 +1,0 @@
-
-This app is responsible for various functions of the main system.
