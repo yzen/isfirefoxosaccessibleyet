@@ -29,17 +29,18 @@
           '<ul class="bugs-counts">' +
             '<li class="bug-count bug-count-label" aria-hidden="true">Bugs' +
             '</li>' +
-            '<li><a class="bug-count total-bugs" hidden><span ' +
+            '<li><a class="bug-count total-bugs"><span ' +
               'class="total"></span> - Total</a></li>' +
-            '<li><a class="bug-count open-bugs" hidden><span ' +
+            '<li><a class="bug-count open-bugs"><span ' +
               'class="open"></span> - Open</a></li>' +
-            '<li><a class="bug-count resolved-bugs" hidden><span ' +
+            '<li><a class="bug-count resolved-bugs"><span ' +
               'class="resolved"></span> - Resolved</a></li>' +
-            '<li><a class="bug-count priority-1-bugs" hidden><span ' +
+            '<li><a class="bug-count priority-1-bugs"><span ' +
               'class="priority-1"></span> - P1</a></li>' +
-            '<li><a class="bug-count priority-2-bugs" hidden><span ' +
+            '<li><a class="bug-count priority-2-bugs"><span ' +
               'class="priority-2"></span> - P2</a></li>' +
-            '<li><a class="bug-count new-bug">File New Bug</a></li>' +
+            '<li><a class="bug-count new-bug">' +
+              'File New Bug</a></li>' +
           '</ul>' +
           '<p class="comment" hidden></p>' +
           '<ul class="p1-bugs-list bugs-list" hidden></ul>' +
@@ -79,7 +80,7 @@
       args.keywords = component.keywords;
       bugzilla.getCount(args, function(count) {
         var option = element.parentNode;
-        option.hidden = false;
+        option.classList.add('visible');
         option.setAttribute('href', bugzilla.getExternalUrl(args));
         element.textContent = count;
         component.counts[elementKey] = count;
@@ -91,6 +92,7 @@
 
     component.loadTotal = function loadTotal() {
       component.loadCount('total', null, function() {
+        component.totalLoaded = true;
         if (component.counts.total === 0) {
           return;
         }
@@ -162,8 +164,12 @@
     };
 
     component.activateSection = function activateSection() {
-      component.render();
-      component.loadTotal();
+      if (!component.rendered) {
+        component.render();
+      }
+      if (!component.totalLoaded) {
+        component.loadTotal();
+      }
       component.element.hidden = false;
       component.element.focus();
     };
@@ -227,6 +233,7 @@
         component.elements.comment.hidden = false;
         component.elements.comment.textContent = component.comment.comment;
       }
+      component.rendered = true;
     };
 
     component.init = function init() {

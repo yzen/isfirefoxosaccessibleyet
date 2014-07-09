@@ -170,7 +170,7 @@ main {
 }
 
 .component .header {
-  width: 35%;
+  width: calc(100% - 0.375rem);
   box-sizing: border-box;
   overflow: hidden;
   padding: 0.5rem 0 0.25rem 3rem;
@@ -178,6 +178,30 @@ main {
   border-right: 0.125rem solid #0095DD;
   box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.1);
   border-left: 0.5rem solid #0095DD;
+}
+
+@media (min-width: 500px) {
+  .component .header {
+    width: 90%;
+  }
+}
+
+@media (min-width: 700px) {
+  .component .header {
+    width: 70%;
+  }
+}
+
+@media (min-width: 800px) {
+  .component .header {
+    width: 60%;
+  }
+}
+
+@media (min-width: 1200px) {
+  .component .header {
+    width: 40%;
+  }
 }
 
 .component a, .component a:link, .component a:visited {
@@ -192,14 +216,45 @@ main {
 
 .bugs-counts {
   display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
-  align-items: center;
+  flex-flow: row wrap;
+  justify-content: center;
+}
+
+.bugs-counts li {
+  flex: 1 1 100%;
+  margin: 0.25rem 0.125rem;
+}
+
+.bugs-counts li.bug-count-label {
+  flex: 2 100%;
+}
+
+@media (min-width: 600px) {
+  .bugs-counts li {
+    flex: 1 45%;
+  }
+}
+
+@media (min-width: 900px) {
+  .bugs-counts li {
+    flex: 1 25%;
+  }
+}
+
+@media (min-width: 1400px) {
+  .bugs-counts li {
+    flex: 1 17%;
+  }
 }
 
 .bugs-counts .bug-count{
   padding: 0.25rem;
-  margin-bottom: 0.25rem;
+  display: none;
+}
+
+.bugs-counts .bug-count.visible, .bugs-counts .bug-count.new-bug,
+.bugs-counts .bug-count.bug-count-label {
+  display: block;
 }
 
 .bug-count-label {
@@ -268,7 +323,7 @@ a.new-bug, a.new-bug:link, a.new-bug:visited {
 }
 
 #system .header{
-  background: url(https://raw.githubusercontent.com/mozilla-b2g/gaia/master/apps/system/style/icons/System_68.png) no-repeat scroll 0.5rem 0.25rem #F6F4EC;
+  background: url(https://raw.githubusercontent.com/mozilla-b2g/gaia/master/apps/system/style/icons/System_68.png) no-repeat scroll 0.5rem 50% #F6F4EC;
   background-size: 2rem;
 }
 
@@ -285,7 +340,7 @@ a.new-bug, a.new-bug:link, a.new-bug:visited {
 }
 
 #settings .header{
-  background: url(https://raw.githubusercontent.com/mozilla-b2g/gaia/master/apps/settings/style/icons/settings_284.png) no-repeat scroll 0.5rem 0.25rem #F6F4EC;
+  background: url(https://raw.githubusercontent.com/mozilla-b2g/gaia/master/apps/settings/style/icons/settings_284.png) no-repeat scroll 0.5rem 50% #F6F4EC;
   background-size: 2rem;
 }
 
@@ -295,7 +350,7 @@ a.new-bug, a.new-bug:link, a.new-bug:visited {
 }
 
 #contacts .header{
-  background: url(https://raw.githubusercontent.com/mozilla-b2g/gaia/master/apps/communications/contacts/style/icons/contacts_284.png) no-repeat scroll 0.5rem 0.25rem #F6F4EC;
+  background: url(https://raw.githubusercontent.com/mozilla-b2g/gaia/master/apps/communications/contacts/style/icons/contacts_284.png) no-repeat scroll 0.5rem 50% #F6F4EC;
   background-size: 2rem;
 }
 
@@ -310,7 +365,7 @@ a.new-bug, a.new-bug:link, a.new-bug:visited {
 }
 
 #dialer .header{
-  background: url(https://raw.githubusercontent.com/mozilla-b2g/gaia/master/apps/communications/dialer/style/icons/dialer_284.png) no-repeat scroll 0.5rem 0.25rem #F6F4EC;
+  background: url(https://raw.githubusercontent.com/mozilla-b2g/gaia/master/apps/communications/dialer/style/icons/dialer_284.png) no-repeat scroll 0.5rem 50% #F6F4EC;
   background-size: 2rem;
 }
 
@@ -320,7 +375,7 @@ a.new-bug, a.new-bug:link, a.new-bug:visited {
 }
 
 #sms .header{
-  background: url(https://raw.githubusercontent.com/mozilla-b2g/gaia/master/apps/sms/style/icons/sms_284.png) no-repeat scroll 0.5rem 0.25rem #F6F4EC;
+  background: url(https://raw.githubusercontent.com/mozilla-b2g/gaia/master/apps/sms/style/icons/sms_284.png) no-repeat scroll 0.5rem 50% #F6F4EC;
   background-size: 2rem;
 }
 
@@ -330,7 +385,7 @@ a.new-bug, a.new-bug:link, a.new-bug:visited {
 }
 
 #homescreen .header{
-  background: url(https://raw.githubusercontent.com/mozilla-b2g/gaia/master/apps/verticalhome/style/icons/vertical_68.png) no-repeat scroll 0.5rem 0.25rem #F6F4EC;
+  background: url(https://raw.githubusercontent.com/mozilla-b2g/gaia/master/apps/verticalhome/style/icons/vertical_68.png) no-repeat scroll 0.5rem 50% #F6F4EC;
   background-size: 2rem;
 }
 
@@ -340,7 +395,7 @@ a.new-bug, a.new-bug:link, a.new-bug:visited {
 }
 
 #keyboard .header, #ftu .header, #search .header{
-  background: url('./images/no_icon.png') no-repeat scroll 0.5rem 0.25rem #F6F4EC;
+  background: url('./images/no_icon.png') no-repeat scroll 0.5rem 50% #F6F4EC;
   background-size: 2rem;
 }
 
@@ -350,7 +405,7 @@ a.new-bug, a.new-bug:link, a.new-bug:visited {
 }
 
 #music .header{
-  background: url(https://raw.githubusercontent.com/mozilla-b2g/gaia/master/apps/music/style/icons/music_284.png) no-repeat scroll 0.5rem 0.25rem #F6F4EC;
+  background: url(https://raw.githubusercontent.com/mozilla-b2g/gaia/master/apps/music/style/icons/music_284.png) no-repeat scroll 0.5rem 50% #F6F4EC;
   background-size: 2rem;
 }
 
@@ -366,7 +421,7 @@ a.new-bug, a.new-bug:link, a.new-bug:visited {
 }
 
 #gallery .header{
-  background: url(https://raw.githubusercontent.com/mozilla-b2g/gaia/master/apps/gallery/style/icons/gallery_284.png) no-repeat scroll 0.5rem 0.25rem #F6F4EC;
+  background: url(https://raw.githubusercontent.com/mozilla-b2g/gaia/master/apps/gallery/style/icons/gallery_284.png) no-repeat scroll 0.5rem 50% #F6F4EC;
   background-size: 2rem;
 }
 
@@ -376,7 +431,7 @@ a.new-bug, a.new-bug:link, a.new-bug:visited {
 }
 
 #video .header{
-  background: url(https://raw.githubusercontent.com/mozilla-b2g/gaia/master/apps/video/style/icons/video_284.png) no-repeat scroll 0.5rem 0.25rem #F6F4EC;
+  background: url(https://raw.githubusercontent.com/mozilla-b2g/gaia/master/apps/video/style/icons/video_284.png) no-repeat scroll 0.5rem 50% #F6F4EC;
   background-size: 2rem;
 }
 
@@ -386,7 +441,7 @@ a.new-bug, a.new-bug:link, a.new-bug:visited {
 }
 
 #calendar .header{
-  background: url(https://raw.githubusercontent.com/mozilla-b2g/gaia/master/apps/calendar/style/icons/calendar_284.png) no-repeat scroll 0.5rem 0.25rem #F6F4EC;
+  background: url(https://raw.githubusercontent.com/mozilla-b2g/gaia/master/apps/calendar/style/icons/calendar_284.png) no-repeat scroll 0.5rem 50% #F6F4EC;
   background-size: 2rem;
 }
 
@@ -396,7 +451,7 @@ a.new-bug, a.new-bug:link, a.new-bug:visited {
 }
 
 #email .header{
-  background: url(https://raw.githubusercontent.com/mozilla-b2g/gaia/master/apps/email/style/icons/email_284.png) no-repeat scroll 0.5rem 0.25rem #F6F4EC;
+  background: url(https://raw.githubusercontent.com/mozilla-b2g/gaia/master/apps/email/style/icons/email_284.png) no-repeat scroll 0.5rem 50% #F6F4EC;
   background-size: 2rem;
 }
 
@@ -411,7 +466,7 @@ a.new-bug, a.new-bug:link, a.new-bug:visited {
 }
 
 #camera .header{
-  background: url(https://raw.githubusercontent.com/mozilla-b2g/gaia/master/apps/camera/style/icons/camera_284.png) no-repeat scroll 0.5rem 0.25rem #F6F4EC;
+  background: url(https://raw.githubusercontent.com/mozilla-b2g/gaia/master/apps/camera/style/icons/camera_284.png) no-repeat scroll 0.5rem 50% #F6F4EC;
   background-size: 2rem;
 }
 
@@ -421,7 +476,7 @@ a.new-bug, a.new-bug:link, a.new-bug:visited {
 }
 
 #clock .header{
-  background: url(https://raw.githubusercontent.com/mozilla-b2g/gaia/master/apps/clock/style/icons/clock_284.png) no-repeat scroll 0.5rem 0.25rem #F6F4EC;
+  background: url(https://raw.githubusercontent.com/mozilla-b2g/gaia/master/apps/clock/style/icons/clock_284.png) no-repeat scroll 0.5rem 50% #F6F4EC;
   background-size: 2rem;
 }
 
@@ -435,7 +490,7 @@ a.new-bug, a.new-bug:link, a.new-bug:visited {
 }
 
 #costcontrol .header{
-  background: url(https://raw.githubusercontent.com/mozilla-b2g/gaia/master/apps/costcontrol/style/icons/costcontrol_284.png) no-repeat scroll 0.5rem 0.25rem #F6F4EC;
+  background: url(https://raw.githubusercontent.com/mozilla-b2g/gaia/master/apps/costcontrol/style/icons/costcontrol_284.png) no-repeat scroll 0.5rem 50% #F6F4EC;
   background-size: 2rem;
 }
 
@@ -449,7 +504,7 @@ a.new-bug, a.new-bug:link, a.new-bug:visited {
 }
 
 #fm .header{
-  background: url(https://raw.githubusercontent.com/mozilla-b2g/gaia/master/apps/fm/style/icons/fm_284.png) no-repeat scroll 0.5rem 0.25rem #F6F4EC;
+  background: url(https://raw.githubusercontent.com/mozilla-b2g/gaia/master/apps/fm/style/icons/fm_284.png) no-repeat scroll 0.5rem 50% #F6F4EC;
   background-size: 2rem;
 }
 
