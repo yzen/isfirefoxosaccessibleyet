@@ -97,6 +97,11 @@ main {
   }
 }
 
+.scores-header {
+  color: #484848;
+  text-align: center;
+}
+
 .components-overview {
   display: flex;
   flex-flow: row wrap;
