@@ -94,6 +94,10 @@
       component.loadCount('total', null, function() {
         component.totalLoaded = true;
         if (component.counts.total === 0) {
+          ['open', 'resolved', 'p1', 'p2'].forEach(function(elementKey) {
+            var li = component.elements[elementKey].parentNode.parentNode;
+            li.classList.add('hidden');
+          });
           return;
         }
         component.loadBugs();
