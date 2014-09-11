@@ -52,34 +52,61 @@ ul {
 }
 
 h1, .large {
-  font-size: 3rem;
-  letter-spacing: -0.125rem;
+  font-size: 4.5rem;
+  letter-spacing: -0.188rem;
 }
 
-@media (min-height: 800px) {
-  .large {
-    font-size: 4.5rem;
-    letter-spacing: -0.188rem;
+@media (min-width: 1081px) {
+  h1, .large {
+    font-size: 3rem;
+    letter-spacing: -0.125rem;
   }
 }
 
 h2, .component .header {
+  font-size: 3rem;
+  letter-spacing: -0.125rem;
+}
+
+@media (min-width: 1081px) {
+  h2, .component .header {
+    font-size: 2rem;
+    letter-spacing: -0.063rem;
+  }
+}
+
+h3, .bugs-counts {
   font-size: 2rem;
   letter-spacing: -0.063rem;
 }
 
-h3, .bugs-counts {
+@media (min-width: 1081px) {
+  h3, .bugs-counts {
+    font-size: 1.75rem;
+    letter-spacing: -0.031rem;
+  }
+}
+
+h4 {
   font-size: 1.75rem;
   letter-spacing: -0.031rem;
 }
 
-h4 {
-  font-size: 1.5rem;
-  letter-spacing: -0.016rem;
+@media (min-width: 1081px) {
+  h4 {
+    font-size: 1.5rem;
+    letter-spacing: -0.016rem;
+  }
 }
 
 .small, small {
-  font-size: 0.75rem;
+  font-size: 1.5rem
+}
+
+@media (min-width: 1081px) {
+  .small, small {
+    font-size: 0.75rem;
+  }
 }
 
 main {
