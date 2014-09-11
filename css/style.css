@@ -11,7 +11,13 @@ h1, h2, h3, h4, h5, h6, .large, .component .header, .bugs-counts {
   margin: 0;
   padding: 0;
   line-height: 100%;
-  font-weight: 100;
+  font-weight: 400;
+}
+
+@media (min-width: 1081px) {
+  h1, h2, h3, h4, h5, h6, .large, .component .header, .bugs-counts {
+    font-weight: 100;
+  }
 }
 
 ul {
@@ -123,7 +129,7 @@ main {
   bottom: 2rem;
   position: relative;
   margin: 0 auto 5rem auto;
-  padding: 5rem 0;
+  padding: 0;
   width: 95%;
 }
 
@@ -136,6 +142,7 @@ main {
 
 .scores-header {
   color: #484848;
+  padding-top: 5rem;
   text-align: center;
 }
 
@@ -264,7 +271,13 @@ main {
 }
 
 .bug-count-label {
-  font-weight: normal;
+  font-weight: 400;
+}
+
+@media (min-width: 1081px) {
+  .bug-count-label {
+    font-weight: 100;
+  }
 }
 
 .total-bugs, .open-bugs, .resolved-bugs, .priority-1-bugs, .priority-2-bugs, .new-bug {
@@ -321,7 +334,13 @@ a.new-bug, a.new-bug:link, a.new-bug:visited {
 .bugs-list-label {
   font-size: 1.75rem;
   letter-spacing: -0.031rem;
-  font-weight: 100;
+  font-weight: 400;
+}
+
+@media (min-width: 1081px) {
+  .bugs-list-label {
+    font-weight: 100;
+  }
 }
 
 .bugs-list-item:nth-child(2n) {
