@@ -168,6 +168,10 @@
     };
 
     component.activateSection = function activateSection() {
+      Array.prototype.forEach.call(document.querySelectorAll('.component'),
+        function(component) {
+          component.hidden = true;
+        });
       if (!component.rendered) {
         component.render();
       }
