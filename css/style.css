@@ -25,13 +25,23 @@ ul {
   padding: 0;
   width: 100%;
   height: 80vh;
-  background-position: 50% 55vh, 0 0, 0 0, 0 0;
   background-color: #00539F;
+  background-position: 0 0, 0 0, 0 0;
   background-size: 14rem auto, auto auto, auto auto, auto auto;
-  background-image: url('./images/phone-image.png'),
-    url('./images/header-background.png'), url('./images/blueprint.png'),
-    url('./images/mdn-header-gradient.png');
-  background-repeat: no-repeat, repeat, repeat, repeat-x;
+  background-image: url('./images/header-background.png'),
+    url('./images/blueprint.png'), url('./images/mdn-header-gradient.png');
+  background-repeat: repeat, repeat, repeat-x;
+}
+
+@media (min-width: 600px) {
+  .overview {
+    background-position: 50% 55vh, 0 0, 0 0, 0 0;
+    background-size: 14rem auto, auto auto, auto auto, auto auto;
+    background-image: url('./images/phone-image.png'),
+      url('./images/header-background.png'), url('./images/blueprint.png'),
+      url('./images/mdn-header-gradient.png');
+    background-repeat: no-repeat, repeat, repeat, repeat-x;
+  }
 }
 
 .question {
@@ -41,7 +51,7 @@ ul {
   width: 70%;
 }
 
-@media (min-height: 800px) {
+@media (min-width: 1081px) {
   .question {
     padding-top: 30vh;
   }
@@ -117,7 +127,7 @@ main {
   width: 95%;
 }
 
-@media (min-height: 800px) {
+@media (min-width: 1081px) {
   main {
     bottom: 0;
     width: 70%;
@@ -179,7 +189,7 @@ main {
   position: relative;
 }
 
-@media (min-height: 800px) {
+@media (min-width: 1081px) {
   .components {
     bottom: -15vh;
   }
@@ -206,7 +216,7 @@ main {
   }
 }
 
-@media (min-width: 800px) {
+@media (min-width: 1081px) {
   .component .header {
     width: 60%;
   }
