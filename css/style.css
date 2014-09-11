@@ -24,7 +24,7 @@ ul {
   margin: 0;
   padding: 0;
   width: 100%;
-  height: 80vh;
+  height: 40rem;
   background-color: #00539F;
   background-position: 0 0, 0 0, 0 0;
   background-size: 14rem auto, auto auto, auto auto, auto auto;
@@ -35,7 +35,7 @@ ul {
 
 @media (min-width: 600px) {
   .overview {
-    background-position: 50% 55vh, 0 0, 0 0, 0 0;
+    background-position: 50% 30rem, 0 0, 0 0, 0 0;
     background-size: 14rem auto, auto auto, auto auto, auto auto;
     background-image: url('./images/phone-image.png'),
       url('./images/header-background.png'), url('./images/blueprint.png'),
@@ -45,7 +45,7 @@ ul {
 }
 
 .question {
-  padding-top: 10vh;
+  padding-top: 5rem;
   position: relative;
   margin: 0 auto;
   width: 70%;
@@ -53,7 +53,7 @@ ul {
 
 @media (min-width: 1081px) {
   .question {
-    padding-top: 30vh;
+    padding-top: 15rem;
   }
 }
 
@@ -120,7 +120,7 @@ h4 {
 }
 
 main {
-  bottom: 5vh;
+  bottom: 2rem;
   position: relative;
   margin: 0 auto 5rem auto;
   padding: 5rem 0;
@@ -184,15 +184,9 @@ main {
 .components {
   padding: 0;
   color: #484848;
-  margin: 1rem 0;
-  bottom: -10vh;
+  margin: 5rem 0;
+  bottom: 0;
   position: relative;
-}
-
-@media (min-width: 1081px) {
-  .components {
-    bottom: -15vh;
-  }
 }
 
 .component {
