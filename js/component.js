@@ -8,13 +8,11 @@
     var component = {
       selectors: {
         header: '.header',
-        bugCounts: '.bugs-counts',
-        bugCountLabel: '.bug-count-label',
         total: '.total',
         open: '.open',
+        openContainer: '.open-container',
         resolved: '.resolved',
-        p1: '.priority-1',
-        p2: '.priority-2',
+        resolvedContainer: '.resolved-container',
         newBug: '.new-bug',
         bugsList: '.p1-bugs-list',
         goodFirstBugsList: '.good-first-bugs-list',
@@ -26,23 +24,17 @@
       keywords: 'access',
       html: '<header class="header"></header>' +
         '<div class="component-section">' +
-          '<ul class="bugs-counts">' +
-            '<li class="bug-count bug-count-label" aria-hidden="true">Bugs' +
-            '</li>' +
-            '<li><a class="bug-count total-bugs"><span ' +
-              'class="total"></span> - Total</a></li>' +
-            '<li><a class="bug-count open-bugs"><span ' +
-              'class="open"></span> - Open</a></li>' +
-            '<li><a class="bug-count resolved-bugs"><span ' +
-              'class="resolved"></span> - Resolved</a></li>' +
-            '<li><a class="bug-count priority-1-bugs"><span ' +
-              'class="priority-1"></span> - P1</a></li>' +
-            '<li><a class="bug-count priority-2-bugs"><span ' +
-              'class="priority-2"></span> - P2</a></li>' +
-            '<li><a class="bug-count new-bug">' +
-              'File New Bug</a></li>' +
-          '</ul>' +
           '<p class="comment" hidden></p>' +
+          '<p class="bugs-information">There were ' +
+              '<a class="bug-count total-bugs"><span class="total"></span>' +
+              '</a> reported bugs. <span class="resolved-container" hidden>' +
+              '<a class="bug-count resolved-bugs"><span class="resolved">' +
+              '</span></a> bugs are now resolved.</span> ' +
+              '<span class="open-container" hidden>' +
+              '<a class="bug-count open-bugs"><span class="open"></span></a> ' +
+              'are currently open.</span>' +
+              '<a class="bug-count new-bug large">File New Bug</a>' +
+          '</p>' +
           '<ul class="p1-bugs-list bugs-list" hidden></ul>' +
           '<ul class="good-first-bugs-list bugs-list" hidden></ul>' +
         '</div>'
@@ -80,10 +72,13 @@
       args.keywords = component.keywords;
       bugzilla.getCount(args, function(count) {
         var option = element.parentNode;
-        option.classList.add('visible');
+        var container = component.elements[elementKey + 'Container'];
         option.setAttribute('href', bugzilla.getExternalUrl(args));
         element.textContent = count;
         component.counts[elementKey] = count;
+        if (container) {
+          container.hidden = false;
+        }
         if (callback) {
           callback();
         }
@@ -94,31 +89,32 @@
       component.loadCount('total', null, function() {
         component.totalLoaded = true;
         if (component.counts.total === 0) {
-          ['open', 'resolved', 'p1', 'p2'].forEach(function(elementKey) {
-            var li = component.elements[elementKey].parentNode.parentNode;
-            li.classList.add('hidden');
-          });
+          component.element.hidden = false;
+          component.element.focus();
           return;
         }
-        component.loadBugs();
+        component.loadBugs(function() {
+          component.element.hidden = false;
+          component.element.focus();
+        });
       });
     };
 
-    component.loadBugs = function loadBugs() {
+    component.showCounts = function showCounts() {
+      if (component.element.hidden && component.counts.open !== undefined &&
+        component.counts.resolved !== undefined) {
+        component.element.hidden = false;
+        component.element.focus();
+      }
+    };
+
+    component.loadBugs = function loadBugs(callback) {
       component.loadCount('open', {
         status: ['NEW', 'REOPENED']
-      });
+      }, component.showCounts);
       component.loadCount('resolved', {
         status: ['RESOLVED']
-      });
-      component.loadCount('p1', {
-        status: ['NEW', 'REOPENED'],
-        whiteboard: '[b2ga11y p=1]'
-      });
-      component.loadCount('p2', {
-        status: ['NEW', 'REOPENED'],
-        whiteboard: '[b2ga11y p=2]'
-      });
+      }, component.showCounts);
 
       component.loadBugsList(component.elements.bugsList, {
         status: ['NEW', 'REOPENED'],
@@ -178,8 +174,6 @@
       if (!component.totalLoaded) {
         component.loadTotal();
       }
-      component.element.hidden = false;
-      component.element.focus();
     };
 
     component.renderOverview = function renderOverview() {
@@ -224,9 +218,6 @@
 
     component.render = function render() {
       component.elements.header.textContent = options.label;
-      component.elements.bugCounts.setAttribute('aria-labelledby',
-        component.name + '-bug-count');
-      component.elements.bugCountLabel.id = component.name + '-bug-count';
       component.elements.newBug.setAttribute('href', bugzilla.getExternalUrl({
         blocked: 'gaiaa11y',
         cc: ['yzenevich@mozilla.com', 'marco.zehe@googlemail.com',

@@ -7,7 +7,7 @@ body {
   background-image: linear-gradient(to bottom, #EAEFF2, #D4DDE4);
 }
 
-h1, h2, h3, h4, h5, h6, .large, .component .header, .bugs-counts {
+h1, h2, h3, h4, h5, h6, .large, .component .header, .bug-count {
   margin: 0;
   padding: 0;
   line-height: 100%;
@@ -15,7 +15,7 @@ h1, h2, h3, h4, h5, h6, .large, .component .header, .bugs-counts {
 }
 
 @media (min-width: 1081px) {
-  h1, h2, h3, h4, h5, h6, .large, .component .header, .bugs-counts {
+  h1, h2, h3, h4, h5, h6, .large, .component .header, .bug-count {
     font-weight: 100;
   }
 }
@@ -91,13 +91,13 @@ h2, .component .header {
   }
 }
 
-h3, .bugs-counts {
+h3, .bug-count {
   font-size: 2rem;
   letter-spacing: -0.063rem;
 }
 
 @media (min-width: 1081px) {
-  h3, .bugs-counts {
+  h3, .bug-count {
     font-size: 1.75rem;
     letter-spacing: -0.031rem;
   }
@@ -233,82 +233,37 @@ main {
   border: 1px solid #F6F4EC;
 }
 
-.bugs-counts {
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: center;
-}
-
-.bugs-counts li {
-  flex: 1 1 100%;
+.bugs-information {
+  padding-top: 1rem;
+  border: 1px solid #F6F4EC;
   text-align: center;
-  margin: 0.25rem 0.125rem;
 }
 
-.bugs-counts li.bug-count-label {
-  flex: 2 100%;
-  text-align: inherit;
-}
-
-@media (min-width: 1081px) {
-  .bugs-counts li {
-    flex: 1 45%;
-  }
-}
-
-.bugs-counts .bug-count{
+.bug-count{
   padding: 1.25rem 0.25rem;
-  display: none;
-}
-
-.hidden {
-  display: none;
-}
-
-.bugs-counts .bug-count.visible, .bugs-counts .bug-count.new-bug,
-.bugs-counts .bug-count.bug-count-label {
-  display: block;
-}
-
-.bug-count-label {
   font-weight: 400;
 }
 
 @media (min-width: 1081px) {
-  .bug-count-label {
+  .bug-count {
     font-weight: 100;
   }
 }
 
-.total-bugs, .open-bugs, .resolved-bugs, .priority-1-bugs, .priority-2-bugs, .new-bug {
-  border-width: 0.25rem;
-  border-style: solid;
+.open {
+  color: #00539F;
 }
-
-.total-bugs {
-  border-color: #E66000;
-}
-
-.open-bugs {
-  border-color: #00539F;
-}
-
-.resolved-bugs {
-  border-color: #30A923;
-}
-
-.priority-1-bugs {
-  border-color: #EA3B28;
-}
-
-.priority-2-bugs {
-  border-color: #C13832;
+.resolved {
+  color: #30A923;
 }
 
 a.new-bug, a.new-bug:link, a.new-bug:visited {
   color: #FFF;
+  padding: 1.25rem auto;
   background-color: #0095DD;
   border-color: #0095DD;
+  display: block;
+  margin: 1rem auto 0 auto;
 }
 
 .component .component-section {
@@ -348,12 +303,12 @@ a.new-bug, a.new-bug:link, a.new-bug:visited {
 }
 
 #system .header{
-  background: url(https://raw.githubusercontent.com/mozilla-b2g/gaia/master/apps/system/style/icons/System_68.png) no-repeat scroll 0.5rem 50% #F6F4EC;
+  background: url(https://raw.githubusercontent.com/mozilla-b2g/gaia/master/apps/system/style/icons/system_284.png) no-repeat scroll 0.5rem 50% #F6F4EC;
   background-size: 2rem;
 }
 
 #system-overview {
-  background: url(https://raw.githubusercontent.com/mozilla-b2g/gaia/master/apps/system/style/icons/System_68.png) no-repeat scroll 0.5rem 50% #FFF;
+  background: url(https://raw.githubusercontent.com/mozilla-b2g/gaia/master/apps/system/style/icons/system_284.png) no-repeat scroll 0.5rem 50% #FFF;
   background-size: 2rem;
 }
 
@@ -410,12 +365,12 @@ a.new-bug, a.new-bug:link, a.new-bug:visited {
 }
 
 #homescreen .header{
-  background: url(https://raw.githubusercontent.com/mozilla-b2g/gaia/master/apps/verticalhome/style/icons/vertical_68.png) no-repeat scroll 0.5rem 50% #F6F4EC;
+  background: url(https://raw.githubusercontent.com/mozilla-b2g/gaia/master/apps/verticalhome/style/icons/vertical_284.png) no-repeat scroll 0.5rem 50% #F6F4EC;
   background-size: 2rem;
 }
 
 #homescreen-overview {
-  background: url(https://raw.githubusercontent.com/mozilla-b2g/gaia/master/apps/verticalhome/style/icons/vertical_68.png) no-repeat scroll 0.5rem 50% #FFF;
+  background: url(https://raw.githubusercontent.com/mozilla-b2g/gaia/master/apps/verticalhome/style/icons/vertical_284.png) no-repeat scroll 0.5rem 50% #FFF;
   background-size: 2rem;
 }
 
