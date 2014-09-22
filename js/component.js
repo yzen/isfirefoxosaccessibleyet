@@ -90,13 +90,10 @@
         component.totalLoaded = true;
         if (component.counts.total === 0) {
           component.element.hidden = false;
-          component.element.focus();
+          component.elements.header.focus();
           return;
         }
-        component.loadBugs(function() {
-          component.element.hidden = false;
-          component.element.focus();
-        });
+        component.loadBugs();
       });
     };
 
@@ -104,11 +101,11 @@
       if (component.element.hidden && component.counts.open !== undefined &&
         component.counts.resolved !== undefined) {
         component.element.hidden = false;
-        component.element.focus();
+        component.elements.header.focus();
       }
     };
 
-    component.loadBugs = function loadBugs(callback) {
+    component.loadBugs = function loadBugs() {
       component.loadCount('open', {
         status: ['NEW', 'REOPENED']
       }, component.showCounts);
