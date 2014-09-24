@@ -22,7 +22,7 @@
       counts: {},
       keys: options.keys,
       keywords: 'access',
-      html: '<header class="header"></header>' +
+      html: '<h2 class="header"></h2>' +
         '<div class="component-section">' +
           '<p class="comment" hidden></p>' +
           '<p class="bugs-information">There were ' +
