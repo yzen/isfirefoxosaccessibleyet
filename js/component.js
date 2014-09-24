@@ -165,6 +165,11 @@
         function(component) {
           component.hidden = true;
         });
+      if (component.rendered && component.totalLoaded) {
+        component.element.hidden = false;
+        component.elements.header.focus();
+        return;
+      }
       if (!component.rendered) {
         component.render();
       }
