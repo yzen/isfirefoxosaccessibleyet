@@ -2,7 +2,7 @@
 
 (function(window) {
 
-  var bugzillaUrl = 'https://api-dev.bugzilla.mozilla.org/latest/';
+  var bugzillaUrl = 'https://bugzilla.mozilla.org/bzapi/';
   var bugzillaExtUrl = 'https://bugzilla.mozilla.org/';
 
   function get(path, callback) {
